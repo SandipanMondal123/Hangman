@@ -18,10 +18,11 @@ def hangman():
     userLetters = set()
     
     life = 5
-    print(pick)
+    
     while len(wordLetters) > 0 and life > 0:
         printWord(pick, userLetters)
         print("Number of lives: %d" % life)
+        print("You have used the letters: " , " ".join(userLetters))
         user_input = input("Type a letter or type 'guess' to guess entire word: ").upper()
      
         if user_input == "GUESS":
@@ -33,7 +34,7 @@ def hangman():
                 print("Not quite -> lost a chance")
                 life = life - 1
         elif user_input not in alphabet:
-            print("Inputs needs to be a character/letter or 'guess' -> Try again ")
+            print("\nInputs needs to be a character/letter or 'guess' -> Try again ")
         elif user_input in (alphabet - userLetters): #if the input is a letter that has not been inputted before
             userLetters.add(user_input)
             if user_input in wordLetters:
